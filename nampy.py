@@ -29,10 +29,3 @@ class array:
 
     def __repr__(self):
         return repr(self._inner)
-
-a = zeros(dict(x=3, y=2, z=5))
-print(a())
-print(a(x=1))
-print(a(x=1,y=1))
-print(a(x=0)(y=1))
-print(a(x=0,y=1,z=s_[1:3]))
