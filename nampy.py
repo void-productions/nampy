@@ -9,15 +9,18 @@ def zeros(shape: Dict[str, int]):
 class array:
     def __init__(self, l, axes: List[str]):
         self._inner = np.array(l)
-        self._axes = axes
+        n = len(self._inner.shape)
+        self._axes = dict(zip(axes, range(n)))
 
     def __call__(self, **kwargs):
         l = [np.s_[:]] * len(self._inner.shape)
         for (key, v) in kwargs.items():
-            i = self._axes.index(key)
+            i = self._axes[key]
             l[i] = v 
         return self._inner[tuple(l)]
-        
+
+    def __repr__(self):
+        return repr(self._inner)
 
 a = zeros(dict(x=3, y=2))
 print(a())
