@@ -1,8 +1,10 @@
 import numpy as np
-from typing import List
+from typing import Dict, List, Optional
 
-def zeros(shape, axes: List[str]):
-    return array(np.zeros(shape), axes)
+def zeros(shape: Dict[str, int]):
+    axes = list(shape.keys())
+    np_shape = list(shape.values())
+    return array(np.zeros(np_shape), axes)
 
 class array:
     def __init__(self, l, axes: List[str]):
@@ -17,7 +19,7 @@ class array:
         return self._inner[tuple(l)]
         
 
-a = zeros((4, 3, 2), ["x", "y", "z"])
+a = zeros(dict(x=3, y=2))
 print(a())
 print(a(x=1))
 print(a(x=1,y=1))
