@@ -1,7 +1,7 @@
 import numpy as np
 from typing import Dict, List, Optional
 
-s = slice
+s_ = np.s_
 
 def zeros(shape: Dict[str, int]):
     axes = list(shape.keys())
@@ -35,4 +35,4 @@ print(a())
 print(a(x=1))
 print(a(x=1,y=1))
 print(a(x=0)(y=1))
-print(a(x=0)(y=1)(z=s(1,3)))
+print(a(x=0)(y=1)(z=s_[1:3]))
